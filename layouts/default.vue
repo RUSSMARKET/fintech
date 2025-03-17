@@ -21,9 +21,9 @@ body{
     grid-template-columns: 200px 1fr;
 }
 main{
-    padding-top: 30px;
-    padding-left: 30px;
-    padding-right: 30px;
+    padding: 30px;
+    height: calc(100vh - 60px);
+    overflow: auto;
 }
 .content-wrapper{
     max-width: calc(100vw - 200px);

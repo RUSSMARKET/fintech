@@ -1,7 +1,9 @@
 <script setup>
+/*
 import { LMStudioClient, Chat } from "@lmstudio/sdk";
 const client = new LMStudioClient();
 const model = await client.llm.model("gemma-3-12b-it"); //llama-3.2-3b-instruct
+*/
 
 const input_text = ref('')
 const button_load = ref(false)
@@ -27,18 +29,20 @@ const sendMessage = async () => {
         input_text.value = ''
         button_load.value = false
 
+        /*
         const chat = Chat.from(messages.value);
         const prediction = model.respond(chat);
 
         for await (const { content } of prediction) {
             console.log(content, new Date()) 
             last_bot_message.value += content
-        }
+        }*/
 
         messages.value.push({
             role: 'system',
-            content: last_bot_message.value
+            content: value
         })
+        
         last_bot_message.value = ''
     }
 }

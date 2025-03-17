@@ -26,7 +26,7 @@
             </NuxtLink>
             <NuxtLink to="/income/">
                 <i class="pi pi-credit-card"></i>
-                Доход
+                Финансы
             </NuxtLink>
             <NuxtLink to="/agents/">
                 <i class="pi pi-users"></i>
@@ -58,7 +58,7 @@
             </NuxtLink>
             <NuxtLink to="/documents/">
                 <i class="pi pi-file"></i>
-                Мои документы
+                Документы
             </NuxtLink>
         </div>
     </div>
@@ -73,6 +73,7 @@
     padding: 10px;
     box-sizing: border-box;
     position: relative;
+    z-index: 2;
 }
 .navigation-items a{
     display: flex;

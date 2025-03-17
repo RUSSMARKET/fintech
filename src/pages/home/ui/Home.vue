@@ -12,7 +12,7 @@ const showBottomLeft = () => {
 <template>
     <div class="home-page">
         <div class="home-page-toppanel">
-            <Button label="Войти на смену" @click="showBottomLeft" />
+            <Button label="Выйти на смену" @click="showBottomLeft" />
         </div>
 
         <Articles />

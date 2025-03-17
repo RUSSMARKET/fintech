@@ -1,6 +1,5 @@
 import { defineNuxtConfig } from 'nuxt/config'
 import Aura from '@primeuix/themes/aura';
-import ToastService from 'primevue/toastservice';
 import { fileURLToPath } from 'url'
 import { dirname, resolve } from 'path'
 

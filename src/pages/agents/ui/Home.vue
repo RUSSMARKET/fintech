@@ -11,11 +11,11 @@
 <script setup>
 const data = [
     {
-        fio: 'Шейх Андрей Андреич',
-        phone: '89991110101',
-        email: 'mail@shah.ru',
-        organization: 'Русс спорт драфт крафт штраф лото',
-        role: 'Директор'
+        fio: 'Иванов Иван Иванович',
+        phone: '8 800 000 00 00',
+        email: 'test@mail.ru',
+        organization: 'Руссмаркет',
+        role: 'Агент'
     },
 ]
 </script>

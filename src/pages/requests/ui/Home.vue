@@ -17,10 +17,10 @@ const data = [
         created: '12.03.2025',
         product: 'Альфа',
         id: 'oijwqr-12341d-pokasd-k124hu',
-        client: 'Адольф Сталин',
-        phone: '8 800 555 35 35',
-        creator: 'РасПутин',
-        status: 'Было дело'
+        client: 'Иванов Иван',
+        phone: '8 800 000 00 00',
+        creator: 'admin',
+        status: 'Выполнено'
     }
 ]
 </script>

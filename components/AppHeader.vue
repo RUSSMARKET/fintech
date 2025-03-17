@@ -9,11 +9,21 @@ const items = [
         items: [
             {
                 label: 'Профиль',
-                icon: 'pi pi-user-edit'
+                icon: 'pi pi-user-edit',
+                command: () => {
+                    navigateTo({
+                        path: '/profile',
+                    });
+                }
             },
             {
                 label: 'Настройки',
-                icon: 'pi pi-spin pi-cog'
+                icon: 'pi pi-spin pi-cog',
+                command: () => {
+                    navigateTo({
+                        path: '/options',
+                    });
+                }
             },
             {
                 label: 'Выход',
@@ -64,6 +74,8 @@ const toggle = (event) => {
     align-items: center;
     justify-content: space-between;
     padding: 10px 30px;
+    box-shadow: 0px 2px 10px rgba(66, 66, 66, 0.25);
+    position: relative;
 }
 .page_name{
     font-size: 20px;
