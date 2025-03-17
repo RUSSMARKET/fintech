@@ -8,7 +8,20 @@ const toggleFilter = (event) => {
     stat_filter.value.toggle(event);
 }
 const DateSelect = () => {
-    console.log(selected_date)
+    
+    selected_date.value.forEach((element, key) => {
+        //console.log(element)
+        if(element != null){
+
+            console.log(new Date(element).toLocaleDateString())
+
+            if(key == 1){
+                used_dates.value += ' - ' + new Date(element).toLocaleDateString()
+            } else {
+                used_dates.value = new Date(element).toLocaleDateString()
+            }
+        }
+    });
 }
 
 </script>
