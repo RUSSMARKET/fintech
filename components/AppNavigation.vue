@@ -30,7 +30,7 @@
             </NuxtLink>
             <NuxtLink to="/agents/">
                 <i class="pi pi-users"></i>
-                Агенты
+                Сотрудники
             </NuxtLink>
             <NuxtLink to="/inventory/">
                 <i class="pi pi-box"></i>
@@ -40,19 +40,19 @@
                 <i class="pi pi-graduation-cap"></i>
                 Обучения
             </NuxtLink>
-            <NuxtLink to="/rating/">
+            <NuxtLink to="/rating/" class="nav_later">
                 <i class="pi pi-chart-bar"></i>
                 Рейтинг
             </NuxtLink>
-            <NuxtLink to="/chats/">
+            <NuxtLink to="/chats/" class="nav_later">
                 <i class="pi pi-comments"></i>
                 Чаты
             </NuxtLink>
-            <NuxtLink to="/kpi/">
+            <NuxtLink to="/kpi/" class="nav_later">
                 <i class="pi pi-calculator"></i>
                 Планы и KPI
             </NuxtLink>
-            <NuxtLink to="/assistant/">
+            <NuxtLink to="/assistant/" class="nav_later">
                 <i class="pi pi-info-circle"></i>
                 Помощник
             </NuxtLink>
@@ -94,5 +94,10 @@
 }
 .navigation-items a i{
     color: #213E89;
+}
+.nav_later{
+    display: none !important;
+    cursor: default;
+    pointer-events: none;
 }
 </style>

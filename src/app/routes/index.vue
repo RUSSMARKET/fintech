@@ -2,7 +2,8 @@
 import { HomeView } from '@/pages/home';
 
 definePageMeta({
-  title: 'Рабочий стол'
+  title: 'Рабочий стол',
+  layout: 'default',
 })
 
 </script>

@@ -1,7 +1,15 @@
+<script setup>
+    
+</script>
+
 <template>
-    <h1>Hello {{ name }}!</h1>
+    <div class="docs_page">
+        <div class="docs-section">
+            
+        </div>
+    </div>
 </template>
 
-<script setup>
-const name = 'asd'
-</script>
+<style>
+    
+</style>

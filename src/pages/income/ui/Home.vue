@@ -28,7 +28,8 @@ const DateSelect = () => {
 
         <div class="statistics-filter">Статистика на <span @click="toggleFilter" v-html="used_dates"></span></div>
         <Popover ref="stat_filter">
-            <DatePicker v-model="selected_date" @value-change="DateSelect" inline selectionMode="range" :manualInput="false" />
+            <DatePicker v-model="selected_date" @value-change="DateSelect" inline 
+                selectionMode="range" :manualInput="false" view="month" dateFormat="mm/yy"/>
         </Popover>
 
         <div class="statistics-wrapper">

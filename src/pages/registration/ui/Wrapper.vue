@@ -77,7 +77,7 @@ const AccessSubmit = () => {
 
 const PasswordSubmit = () => {
     navigateTo({
-        path: '/auth',
+        path: '/profile',
     });
 }
 

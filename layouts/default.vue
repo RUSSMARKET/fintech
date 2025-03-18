@@ -13,12 +13,12 @@
 
 <style>
 body{
-    background-color: #E7EEFF;
     overflow: hidden;
 }
 .page-wrapper{
     display: grid;
     grid-template-columns: 200px 1fr;
+    background-color: #E7EEFF;
 }
 main{
     padding: 30px;
