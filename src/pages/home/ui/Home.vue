@@ -4,7 +4,18 @@ import Articles from './Articles.vue';
 const toast = useToast();
 
 const showBottomLeft = () => {
-    toast.add({ severity: 'warn', summary: 'Warn Message', detail: 'Message Content', group: 'bl', life: 3000 });
+
+    if (!navigator.geolocation){
+        console.log("Geolocation is not supported by your browser");
+        return;
+    }
+    function geo_success(position) {
+        toast.add({ severity: 'success', summary: 'Вы вышли на работу', detail: position.coords.latitude + ' ' + position.coords.longitude, life: 3000 });
+    }
+    function geo_error() {
+        toast.add({ severity: 'error', summary: 'Ошибка', detail: 'У Вас отключена геолокация', life: 3000 });
+    }
+    navigator.geolocation.getCurrentPosition(geo_success, geo_error);
 };
 
 </script>

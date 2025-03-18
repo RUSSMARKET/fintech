@@ -35,7 +35,7 @@ const ConfirmPhomeChange = (target) => {
 
 const getGeolocation = () => {
     if(geo_checked.value) {
-        console.log("already checked");
+        geo_checked.value = false
         return
     }
     if (!navigator.geolocation){
@@ -54,7 +54,10 @@ const getGeolocation = () => {
 }
 
 const getMessages = () => {
-
+    if(message_checked.value) {
+        message_checked.value = false
+        return
+    }
     if(!("Notification" in window)){
         throw new Error("Your browser does not support push notification");
     }
@@ -81,7 +84,7 @@ const PasswordSubmit = () => {
 const generatePassword = () => {
     password.value = ''
     var length = 8,
-	charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+	charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$&_-~.*";
 	for (var i = 0, n = charset.length; i < length; ++i) {
 		password.value += charset.charAt(Math.floor(Math.random() * n));
 	}
@@ -102,7 +105,8 @@ const generatePassword = () => {
             <h1>Регистрация</h1>
 
             <Form @submit="nextStep" class="first_step">
-                <InputText name="username" type="text" placeholder="Введите имя" fluid />
+                <InputText name="username" type="text" placeholder="Имя" fluid />
+                <InputText name="secondname" type="text" placeholder="Фамилия" fluid />
                 <InputText name="phone" type="text" placeholder="Номер телефона" fluid />
                 <Button type="submit" class="login_btn" label="Зарегистрироваться" />
             </Form>
@@ -113,7 +117,7 @@ const generatePassword = () => {
             <h1>Регистрация</h1>
             <p class="confirm-phone-info">Мы отправили СМС с кодом вам на номер +7(912)250-02-93</p>
             <Form @submit="">
-                <InputOtp @change="ConfirmPhomeChange" v-model="confirm_code" :length="6" />
+                <InputOtp @change="ConfirmPhomeChange" v-model="confirm_code" :length="6" integerOnly />
             </Form>
             <p class="timer">Повторно получить СМС с кодом можно через <span v-html="seconds_last"></span> секунд</p>
             <p class="bask_btn" @click="Reset">Вернуться назад</p>

@@ -24,7 +24,6 @@ const forgot_password = ref(false)
             <h1>Войти</h1>
 
             <Form @submit="onFormSubmit">
-                <InputText name="username" type="text" placeholder="Анна" fluid />
                 <InputText name="phone" type="text" placeholder="+7 (___)___-__-__" fluid />
                 <Button type="submit" class="login_btn" label="Войти" />
             </Form>

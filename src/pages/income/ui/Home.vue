@@ -8,11 +8,8 @@ const toggleFilter = (event) => {
     stat_filter.value.toggle(event);
 }
 const DateSelect = () => {
-    
     selected_date.value.forEach((element, key) => {
-        //console.log(element)
         if(element != null){
-
             console.log(new Date(element).toLocaleDateString())
 
             if(key == 1){
@@ -36,13 +33,13 @@ const DateSelect = () => {
 
         <div class="statistics-wrapper">
             <Card class="statistic">
-                <template #title>До </template>
+                <template #title>До отчета</template>
                 <template #content>
                     <div class="total">2000 ₽</div>
                 </template>
             </Card>
             <Card class="statistic">
-                <template #title>После</template>
+                <template #title>После отчета</template>
                 <template #content>
                     <div class="total">2000 ₽</div>
                 </template>

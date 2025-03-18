@@ -60,6 +60,10 @@
                 <i class="pi pi-file"></i>
                 Документы
             </NuxtLink>
+            <NuxtLink to="/upload/">
+                <i class="pi pi-upload"></i>
+                Загрузка отчета
+            </NuxtLink>
         </div>
     </div>
 </template>

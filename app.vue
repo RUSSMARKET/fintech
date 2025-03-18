@@ -6,6 +6,8 @@ import 'primeicons/primeicons.css'
 <template>
   <NuxtLayout>
     <NuxtPage /> 
-    <Toast position="bottom-right" group="br" />
+    <ClientOnly>
+      <Toast position="bottom-right" />
+    </ClientOnly>
   </NuxtLayout>
 </template>
