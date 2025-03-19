@@ -1,4 +1,5 @@
 <script setup>
+import IncomeClass from '../model'
 
 const stat_filter = ref()
 const used_dates = ref('весь период')
@@ -8,24 +9,19 @@ const toggleFilter = (event) => {
     stat_filter.value.toggle(event);
 }
 const DateSelect = () => {
-    selected_date.value.forEach((element, key) => {
-        if(element != null){
-            console.log(new Date(element).toLocaleDateString())
-
-            if(key == 1){
-                used_dates.value += ' - ' + new Date(element).toLocaleDateString()
-            } else {
-                used_dates.value = new Date(element).toLocaleDateString()
-            }
-        }
-    });
+    console.log(selected_date.value)
+    used_dates.value = IncomeClass.setDateFilter(selected_date.value)
 }
+
+onMounted(() => {
+    IncomeClass.init()
+    used_dates.value = IncomeClass.getDateFilter()
+})
 
 </script>
 
 <template>
     <div class="income-page">
-
         <div class="statistics-filter">Статистика на <span @click="toggleFilter" v-html="used_dates"></span></div>
         <Popover ref="stat_filter">
             <DatePicker v-model="selected_date" @value-change="DateSelect" inline 

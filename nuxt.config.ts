@@ -46,4 +46,7 @@ export default defineNuxtConfig({
     "@@": resolve(__dirname, './'), 
     "assets": resolve(__dirname, './src/assets'),
   },
+  imports: {
+    scan: false
+  }
 })

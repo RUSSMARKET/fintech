@@ -1,6 +1,7 @@
 <script setup>
-const route = useRoute()
+import Notifications from '@/widgets/notifications'
 
+const route = useRoute()
 var menu = ref()
 
 const items = [
@@ -52,7 +53,7 @@ const toggle = (event) => {
                 <i class="pi pi-phone"></i>
                 <i class="pi pi-send"></i>
                 <i class="pi pi-question-circle"></i>
-                <i class="pi pi-bell"></i>
+                <Notifications />
             </div>
 
             <div class="personal" @click="toggle" aria-haspopup="true" aria-controls="overlay_menu">

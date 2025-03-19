@@ -20,7 +20,7 @@
                 <i class="pi pi-list-check"></i>
                 Заявки
             </NuxtLink>
-            <NuxtLink to="/tasks/">
+            <NuxtLink to="/tasks/" class="nav_later">
                 <i class="pi pi-check-circle"></i>
                 Задачи
             </NuxtLink>
@@ -28,11 +28,7 @@
                 <i class="pi pi-credit-card"></i>
                 Финансы
             </NuxtLink>
-            <NuxtLink to="/agents/">
-                <i class="pi pi-users"></i>
-                Сотрудники
-            </NuxtLink>
-            <NuxtLink to="/inventory/">
+            <NuxtLink to="/inventory/" class="nav_later">
                 <i class="pi pi-box"></i>
                 Инвентарь
             </NuxtLink>
@@ -48,17 +44,21 @@
                 <i class="pi pi-comments"></i>
                 Чаты
             </NuxtLink>
-            <NuxtLink to="/kpi/" class="nav_later">
+            <NuxtLink to="/kpi/">
                 <i class="pi pi-calculator"></i>
-                Планы и KPI
+                Планы и Графики
             </NuxtLink>
             <NuxtLink to="/assistant/" class="nav_later">
                 <i class="pi pi-info-circle"></i>
                 Помощник
             </NuxtLink>
-            <NuxtLink to="/documents/">
+            <NuxtLink to="/documents/" class="nav_later">
                 <i class="pi pi-file"></i>
                 Документы
+            </NuxtLink>
+            <NuxtLink to="/agents/">
+                <i class="pi pi-users"></i>
+                Сотрудники
             </NuxtLink>
             <NuxtLink to="/upload/">
                 <i class="pi pi-upload"></i>
@@ -70,7 +70,7 @@
 
 <style>
 .app-navigation{
-    width: 200px;
+    width: 250px;
     height: 100vh;
     background-color: #fff;
     box-shadow: 0px 2px 10px rgba(66, 66, 66, 0.25);

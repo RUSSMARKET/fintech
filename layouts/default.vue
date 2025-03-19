@@ -17,7 +17,7 @@ body{
 }
 .page-wrapper{
     display: grid;
-    grid-template-columns: 200px 1fr;
+    grid-template-columns: 250px 1fr;
     background-color: #E7EEFF;
 }
 main{
@@ -26,6 +26,6 @@ main{
     overflow: auto;
 }
 .content-wrapper{
-    max-width: calc(100vw - 200px);
+    max-width: calc(100vw - 250px);
 }
 </style>

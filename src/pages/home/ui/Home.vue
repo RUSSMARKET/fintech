@@ -10,10 +10,10 @@ const showBottomLeft = () => {
         return;
     }
     function geo_success(position) {
-        toast.add({ severity: 'success', summary: 'Вы вышли на работу', detail: position.coords.latitude + ' ' + position.coords.longitude, life: 3000 });
+        toast.add({ severity: 'success', summary: 'Вы вышли на работу', detail: position.coords.latitude + ' ' + position.coords.longitude, life: 30000 });
     }
     function geo_error() {
-        toast.add({ severity: 'error', summary: 'Ошибка', detail: 'У Вас отключена геолокация', life: 3000 });
+        toast.add({ severity: 'error', summary: 'Ошибка', detail: 'У Вас отключена геолокация', life: 30000 });
     }
     navigator.geolocation.getCurrentPosition(geo_success, geo_error);
 };
