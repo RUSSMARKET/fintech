@@ -163,7 +163,7 @@ const generatePassword = () => {
                     <p>Не менее 1 цифры и специального символа</p>
                 </div>
 
-                <Password v-model="confirm_password" class="confirm_password" placeholder="Повторить пароль"/>
+                <Password v-model="confirm_password" class="confirm_password" placeholder="Повторить пароль" toggleMask/>
                 
                 <Button type="submit" class="login_btn" label="Продолжить" />
                 <div v-if="show_error" class="error_msg">Доступа нет</div>

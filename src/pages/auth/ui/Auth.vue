@@ -7,6 +7,7 @@ const onFormSubmit = () => {
     });
 }
 
+const password = ref()
 const forgot_password = ref(false)
 
 </script>
@@ -23,17 +24,41 @@ const forgot_password = ref(false)
         <div class="auth-form-container" v-if="!forgot_password">
             <h1>Войти</h1>
 
-            <Form @submit="onFormSubmit">
-                <InputText name="phone" type="text" placeholder="+7 (___)___-__-__" fluid />
-                <Button type="submit" class="login_btn" label="Войти" />
-            </Form>
-            <div class="forgot_password_link_wrapper" v-if="0">
-                <div class="forgot_password_link" @click="forgot_password=true">
-                    Забыли пароль?
-                </div>
-            </div>
+            <Tabs value="0">
+                <TabList>
+                    <Tab value="0">Вход по СМС</Tab>
+                    <Tab value="1">Вход по логину</Tab>
+                </TabList>
+                <TabPanels>
+                    <TabPanel value="0">
+                        <Form @submit="onFormSubmit">
+                            <InputText name="phone" type="text" placeholder="+7 (___)___-__-__" fluid />
+                            <Button type="submit" class="login_btn" label="Войти" />
+                        </Form>
+                        <div class="forgot_password_link_wrapper" v-if="0">
+                            <div class="forgot_password_link" @click="forgot_password=true">
+                                Забыли пароль?
+                            </div>
+                        </div>
+                    </TabPanel>
+                    <TabPanel value="1">
+                        <Form @submit="onFormSubmit" class="auth_with_password">
+                            <InputText name="phone" type="text" placeholder="+7 (___)___-__-__" fluid />
+                            <Password v-model="password" class="password" placeholder="Пароль" toggleMask />
+                            <Button type="submit" class="login_btn" label="Войти" />
+                        </Form>
+                        <div class="forgot_password_link_wrapper" v-if="0">
+                            <div class="forgot_password_link" @click="forgot_password=true">
+                                Забыли пароль?
+                            </div>
+                        </div>
+                    </TabPanel>
+                </TabPanels>
+            </Tabs>
+            
             <p class="policy">Нажимая продолжить, вы соглашаетесь с Правилами пользования и Политикой конфиденциальности</p>
         </div>
+
 
     </div>    
 </template>
@@ -50,6 +75,7 @@ const forgot_password = ref(false)
 .auth-form-container{
     width: 400px;
     margin: 0 auto;
+    margin-top: 150px;
 }
 .auth-form-container h1{
     text-align: center;
@@ -97,5 +123,8 @@ const forgot_password = ref(false)
     font-weight: 700;
     color: #fff;
     text-align: center;
+}
+.auth-form-container .p-tab{
+    flex: 1;
 }
 </style>
