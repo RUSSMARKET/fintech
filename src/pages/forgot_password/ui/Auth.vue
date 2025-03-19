@@ -1,13 +1,29 @@
 <script setup>
 import { Form } from '@primevue/forms';
 
+const code = ref()
+const phone = ref()
+const email = ref()
+const sended_code = ref(false)
+
 const onFormSubmit = () => {
-    navigateTo({
-        path: '/',
-    });
+    sended_code.value = true
+    var interval = setInterval(() => {
+        if(seconds_last.value > 0){
+            seconds_last.value = seconds_last.value - 1
+        } else {
+            clearInterval(interval)
+        }
+    }, 1000)
 }
 
-const password = ref()
+const ConfirmPhomeChange = (target) => {
+    if(target.value.length == 6){
+        navigateTo({
+            path: '/auth',
+        });
+    }
+}
 
 </script>
 
@@ -15,42 +31,47 @@ const password = ref()
     <div class="auth-page">
         <div class="auth-header">
             <img class="logo" src="@/assets/img/logo.png" />
-            <NuxtLink to="/registration">
-                Регистрация
+            <NuxtLink to="/auth">
+                Авторизация
             </NuxtLink>
         </div>
 
-        <div class="auth-form-container">
-            <h1>Войти</h1>
+        <div class="auth-form-container" v-if="!sended_code">
+            <h1>Восстановление пароля</h1>
 
             <Tabs value="0">
                 <TabList>
-                    <Tab value="0">Вход по СМС</Tab>
-                    <Tab value="1">Вход по логину</Tab>
+                    <Tab value="0">Номер телефона</Tab>
+                    <Tab value="1">Email</Tab>
                 </TabList>
                 <TabPanels>
                     <TabPanel value="0">
                         <Form @submit="onFormSubmit">
-                            <InputText name="phone" type="text" placeholder="+7 (___)___-__-__" fluid />
+                            <InputText name="phone" v-model="phone" type="text" placeholder="+7 (___)___-__-__" fluid />
                             <Button type="submit" class="login_btn" label="Войти" />
                         </Form>
                     </TabPanel>
                     <TabPanel value="1">
-                        <Form @submit="onFormSubmit" class="auth_with_password">
-                            <InputText name="phone" type="text" placeholder="+7 (___)___-__-__" fluid />
-                            <Password v-model="password" class="password" placeholder="Пароль" toggleMask />
+                        <Form @submit="onFormSubmit">
+                            <InputText name="email" v-model="email" type="text" placeholder="example@mail.ru" fluid />
                             <Button type="submit" class="login_btn" label="Войти" />
                         </Form>
-                        <div class="forgot_password_link_wrapper">
-                            <NuxtLink to="/forgot_password/" class="forgot_password_link">
-                                Забыли пароль?
-                            </NuxtLink>
-                        </div>
                     </TabPanel>
                 </TabPanels>
             </Tabs>
             
             <p class="policy">Нажимая продолжить, вы соглашаетесь с Правилами пользования и Политикой конфиденциальности</p>
+        </div>
+        <div class="auth-form-container" v-else>
+            <div class="reg-form-container confirm-phone">
+                <h1>Регистрация</h1>
+                <p class="confirm-phone-info">Мы отправили СМС с кодом вам на номер +7(912)250-02-93</p>
+                <Form>
+                    <InputOtp @change="ConfirmCode" v-model="confirm_code" :length="6" integerOnly />
+                </Form>
+                <p class="timer">Повторно получить СМС с кодом можно через <span v-html="seconds_last"></span> секунд</p>
+                <p class="bask_btn" @click="Reset">Вернуться назад</p>
+            </div>
         </div>
 
 
