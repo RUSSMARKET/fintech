@@ -1,18 +1,13 @@
 <script setup>
+import NotificationsClass from '@/entities/notification'
+
 const NotificationShow = ref(false)
 
-const Notifications = ref([
-    {
-        severity: 'success',
-        summary: 'Вы вышли на работу',
-        detail: 'Детальная информация'
-    },
-    {
-        severity: 'error',
-        summary: 'Вы не вышли на работу',
-        detail: 'Детальная информация'
-    }
-])
+const Notifications = ref([])
+
+onMounted(() => {
+    NotificationsClass.get()
+})
 
 </script>
 

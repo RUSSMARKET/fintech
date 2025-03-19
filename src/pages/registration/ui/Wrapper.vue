@@ -1,11 +1,13 @@
 <script setup>
 
+const toast = useToast();
+
 var actual_step = ref(1)
 var confirm_code = ref(null)
 var seconds_last = ref(60)
 var geo_checked = ref(false)
 var message_checked = ref(false)
-var show_error = ref(false)
+var show_error = ref('')
 var password = ref('')
 var confirm_password = ref('')
 
@@ -15,7 +17,8 @@ const Reset = () => {
 
 const nextStep = () => {
     actual_step.value = actual_step.value + 1
-
+    show_error.value = ''
+    
     if(actual_step.value == 2){
         var interval = setInterval(() => {
             if(seconds_last.value > 0){
@@ -69,16 +72,42 @@ const getMessages = () => {
 
 const AccessSubmit = () => {
     if(!geo_checked.value || !message_checked.value){
-        show_error.value = true
+        show_error.value = 'Доступа нет'
         return
     }
     nextStep()
 }
 
 const PasswordSubmit = () => {
-    navigateTo({
-        path: '/profile',
-    });
+    if(password.value.length >= 8){
+        if(password.value == confirm_password.value){
+            if(!('!@#$&_-~.*').split('').some(need => password.value.includes(need))){
+                show_error.value = 'Пароль должен содержать хотя бы один спец символ'
+                return
+            }
+            if(!('0123456789').split('').some(need => password.value.includes(need))){
+                show_error.value = 'Пароль должен содержать хотя бы одну цифру'
+                return
+            }
+            if(!('ABCDEFGHIJKLMNOPQRSTUVWXYZ').split('').some(need => password.value.includes(need))){
+                show_error.value = 'Пароль должен содержать хотя бы одну заглавную букву'
+                return
+            }
+            if(!('abcdefghijklmnopqrstuvwxyz').split('').some(need => password.value.includes(need))){
+                show_error.value = 'Пароль должен содержать хотя бы одну строчную букву'
+                return
+            }
+            
+            toast.add({ severity: 'success', summary: 'Успешно', detail: 'Вы успешно зарегистрировались в системе', life: 3000 });
+            navigateTo({
+                path: '/profile',
+            });
+        } else {
+            show_error.value = 'Пароли не совпадают'
+        }
+    } else {
+        show_error.value = 'Минимальная длина пароля - 8 символов'
+    }
 }
 
 const generatePassword = () => {
@@ -88,8 +117,20 @@ const generatePassword = () => {
 	for (var i = 0, n = charset.length; i < length; ++i) {
 		password.value += charset.charAt(Math.floor(Math.random() * n));
 	}
+    if(!('!@#$&_-~.*').split('').some(need => password.value.includes(need))){
+        password.value += ('!@#$&_-~.*').charAt(Math.floor(Math.random() * ('!@#$&_-~.*').length))
+    }
+    if(!('0123456789').split('').some(need => password.value.includes(need))){
+        password.value += ('0123456789').charAt(Math.floor(Math.random() * ('0123456789').length))
+    }
+    if(!('ABCDEFGHIJKLMNOPQRSTUVWXYZ').split('').some(need => password.value.includes(need))){
+        password.value += ('ABCDEFGHIJKLMNOPQRSTUVWXYZ').charAt(Math.floor(Math.random() * ('ABCDEFGHIJKLMNOPQRSTUVWXYZ').length))
+    }
+    if(!('abcdefghijklmnopqrstuvwxyz').split('').some(need => password.value.includes(need))){
+        password.value += ('abcdefghijklmnopqrstuvwxyz').charAt(Math.floor(Math.random() * ('abcdefghijklmnopqrstuvwxyz').length))
+    }    
+    confirm_password.value = password.value
 }
-
 </script>
 
 <template>
@@ -166,7 +207,7 @@ const generatePassword = () => {
                 <Password v-model="confirm_password" class="confirm_password" placeholder="Повторить пароль" toggleMask/>
                 
                 <Button type="submit" class="login_btn" label="Продолжить" />
-                <div v-if="show_error" class="error_msg">Доступа нет</div>
+                <div v-if="show_error.length" class="error_msg" v-html="show_error"></div>
             </Form>
         </div>
         
