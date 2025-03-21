@@ -1,15 +1,19 @@
 <script setup>
-
+import User from '@/entities/user'
 const toast = useToast();
 
-var actual_step = ref(1)
-var confirm_code = ref(null)
-var seconds_last = ref(60)
-var geo_checked = ref(false)
-var message_checked = ref(false)
-var show_error = ref('')
-var password = ref('')
-var confirm_password = ref('')
+const phone = ref()
+const firstname = ref()
+const lastname = ref()
+
+const actual_step = ref(1)
+const confirm_code = ref(null)
+const seconds_last = ref(60)
+const geo_checked = ref(false)
+const message_checked = ref(false)
+const show_error = ref('')
+const password = ref('')
+const confirm_password = ref('')
 
 const Reset = () => {
     actual_step.value = 1
@@ -28,6 +32,16 @@ const nextStep = () => {
             }
         }, 1000)
     }
+}
+
+const SubmitFirstStep = () => {
+
+   // if(phone.value.length)
+
+    console.log(phone.value, phone.value.length)
+
+    return
+    nextStep()
 }
 
 const ConfirmPhomeChange = (target) => {
@@ -98,6 +112,8 @@ const PasswordSubmit = () => {
                 return
             }
             
+            //User.registration()
+
             toast.add({ severity: 'success', summary: 'Успешно', detail: 'Вы успешно зарегистрировались в системе', life: 3000 });
             navigateTo({
                 path: '/profile',
@@ -145,10 +161,10 @@ const generatePassword = () => {
         <div class="reg-form-container" v-if="actual_step == 1" >
             <h1>Регистрация</h1>
 
-            <Form @submit="nextStep" class="first_step">
-                <InputText name="username" type="text" placeholder="Имя" fluid />
-                <InputText name="secondname" type="text" placeholder="Фамилия" fluid />
-                <InputText name="phone" type="text" placeholder="Номер телефона" fluid />
+            <Form @submit="SubmitFirstStep" class="first_step">
+                <InputText v-model="firstname" name="username" type="text" placeholder="Имя" fluid />
+                <InputText v-model="lastname" name="secondname" type="text" placeholder="Фамилия" fluid />
+                <InputText v-model="phone" name="phone" type="text" placeholder="Номер телефона" fluid />
                 <Button type="submit" class="login_btn" label="Зарегистрироваться" />
             </Form>
             <p class="policy">Нажимая продолжить, вы соглашаетесь с Правилами пользования и Политикой конфиденциальности</p>

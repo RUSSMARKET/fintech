@@ -1,11 +1,10 @@
 <script setup lang="ts">
 import "@/assets/css/main.css"
 import 'primeicons/primeicons.css'
-import NotificationsClass from '@/entities/notification'
+import NotificationsClass from '@/entities/notification' 
 
 onMounted(() => {
-  NotificationsClass.init()
-  NotificationsClass.send('success', 'title', 'text')
+  NotificationsClass.init(useToast())
 })
 
 </script>

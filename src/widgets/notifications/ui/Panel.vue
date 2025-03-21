@@ -6,10 +6,15 @@ const NotificationShow = ref(false)
 const Notifications = ref([])
 
 onMounted(() => {
-    NotificationsClass.get()
+    Notifications.value = NotificationsClass.get()
 })
 
+const deleteNotification = (key) => {
+    Notifications.value = NotificationsClass.removeNotification(key)
+}
+
 </script>
+
 
 <template>
     <div class="notification-drawer-content">
@@ -24,7 +29,7 @@ onMounted(() => {
                         <i v-else-if="item.severity=='error'" class="pi pi-times-circle" style="color: red"></i>
 
                         <div class="notification-title" v-html="item.summary"></div>
-                        <i class="pi pi-times remove_icon"></i>
+                        <i class="pi pi-times remove_icon" @click="deleteNotification(key)"></i>
                     </div>
                     <div class="notification-content" v-html="item.detail"></div>
                 </div>

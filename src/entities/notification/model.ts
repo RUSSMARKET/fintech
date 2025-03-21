@@ -2,11 +2,11 @@ import type { ToastServiceMethods } from "primevue"
 
 export default class NotificationsClass {
     static notifications: Array<Object> = []
-    static toast:ToastServiceMethods
+    static toast: ToastServiceMethods
 
-    public static init = () => {
+    public static init = (toast) => {
         this.notifications = JSON.parse(localStorage.getItem('Notifications')) || []
-        this.toast = useToast() 
+        this.toast = toast
     }
 
     public static get = () => {
@@ -14,10 +14,10 @@ export default class NotificationsClass {
     }
 
     public static removeNotification = (key: number) => {
-        if (key > -1) {
-            this.notifications.splice(key, 1);
+        if (key >= 0) {
+            this.notifications.splice(key, 1)
             localStorage.setItem('Notifications', JSON.stringify(this.notifications))
-            return true;
+            return this.notifications;
         }
         return false;
     }
@@ -28,7 +28,7 @@ export default class NotificationsClass {
             summary: summary,
             detail: detail,
         });
-        localStorage.setItem('Notifications', JSON.stringify(this.notifications))
         this.toast.add({ severity: severity, summary: summary, detail: detail, life: 3000 });
+        localStorage.setItem('Notifications', JSON.stringify(this.notifications))
     }
 }

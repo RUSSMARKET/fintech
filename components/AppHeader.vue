@@ -6,36 +6,31 @@ var menu = ref()
 
 const items = [
     {
-        label: 'Options',
-        items: [
-            {
-                label: 'Профиль',
-                icon: 'pi pi-user-edit',
-                command: () => {
-                    navigateTo({
-                        path: '/profile',
-                    });
-                }
-            },
-            {
-                label: 'Настройки',
-                icon: 'pi pi-spin pi-cog',
-                command: () => {
-                    navigateTo({
-                        path: '/options',
-                    });
-                }
-            },
-            {
-                label: 'Выход',
-                icon: 'pi pi-sign-out',
-                command: () => {
-                    navigateTo({
-                        path: '/auth',
-                    });
-                }
-            }
-        ]
+        label: 'Профиль',
+        icon: 'pi pi-user-edit',
+        command: () => {
+            navigateTo({
+                path: '/profile',
+            });
+        }
+    },
+    {
+        label: 'Настройки',
+        icon: 'pi pi-spin pi-cog',
+        command: () => {
+            navigateTo({
+                path: '/options',
+            });
+        }
+    },
+    {
+        label: 'Выход',
+        icon: 'pi pi-sign-out',
+        command: () => {
+            navigateTo({
+                path: '/auth',
+            });
+        }
     }
 ];
 
@@ -99,6 +94,7 @@ const toggle = (event) => {
     display: flex;
     align-items: center;
     gap: 10px;
+    cursor: pointer;
 }
 #overlay_menu{
     margin-top: 30px !important;

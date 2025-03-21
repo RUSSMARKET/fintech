@@ -1,19 +1,18 @@
 <script setup>
 import Articles from './Articles.vue';
-
-const toast = useToast();
+import NotificationsClass from '@/entities/notification'
 
 const showBottomLeft = () => {
 
     if (!navigator.geolocation){
-        console.log("Geolocation is not supported by your browser");
+        NotificationsClass.send('error', 'Ошибка', 'Ваш браузер не поддерживает геолокацию')
         return;
     }
     function geo_success(position) {
-        toast.add({ severity: 'success', summary: 'Вы вышли на работу', detail: position.coords.latitude + ' ' + position.coords.longitude, life: 3000 });
+        NotificationsClass.send('success', 'Вы вышли на работу', position.coords.latitude + ' ' + position.coords.longitude)
     }
     function geo_error() {
-        toast.add({ severity: 'error', summary: 'Ошибка', detail: 'У Вас отключена геолокация', life: 3000 });
+        NotificationsClass.send('error', 'Ошибка', 'У Вас отключена геолокация')
     }
     navigator.geolocation.getCurrentPosition(geo_success, geo_error);
 };
